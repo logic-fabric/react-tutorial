@@ -1,0 +1,26 @@
+.board {
+  width: fit-content;
+  margin: auto;
+  padding: 1.5rem;
+  border-radius: 0.25rem;
+
+  background: var(--primary-100);
+}
+
+.board-square {
+  width: 4rem;
+  height: 4rem;
+  margin: 0.125rem;
+  border: 0.25rem solid var(--primary-500);
+  border-radius: 0.25rem;
+
+  background: white;
+
+  cursor: pointer;
+}
+
+.board-square__content {
+  color: var(--primary-500);
+  font-size: 3rem;
+  font-weight: 700;
+}
