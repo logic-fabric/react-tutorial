@@ -1,3 +1,3 @@
-# Tutoriel React - Septembre 2021
+# Tic-tac-toe - Septembre 2021
 
-Projet basé sur le [tutoriel de la doc de _React.js_](https://fr.reactjs.org/tutorial/tutorial.html).
+Jeu de morpion basé sur le [tutoriel](https://fr.reactjs.org/tutorial/tutorial.html) de la doc de _React.js_.
