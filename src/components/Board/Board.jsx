@@ -5,6 +5,17 @@ import "./Board.css";
 const X_ICON = "fas fa-times-circle";
 const O_ICON = "fas fa-dot-circle";
 
+const WINNING_CONFIGURATIONS = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [6, 4, 2],
+];
+
 function BoardSquare(props) {
   return (
     <button className="board-square" onClick={props.onClick}>
@@ -29,6 +40,22 @@ export class Board extends React.Component {
     };
   }
 
+  getWinner() {
+    for (let config of WINNING_CONFIGURATIONS) {
+      const [index1, index2, index3] = config;
+
+      if (
+        this.state.squares[index1] &&
+        this.state.squares[index1] === this.state.squares[index2] &&
+        this.state.squares[index1] === this.state.squares[index3]
+      ) {
+        return this.state.squares[index1];
+      }
+    }
+
+    return null;
+  }
+
   handleClick(squareIndex) {
     const newSquaresState = [...this.state.squares];
     newSquaresState[squareIndex] = this.state.xIsNextPlayer ? "X" : "O";
@@ -40,6 +67,8 @@ export class Board extends React.Component {
   }
 
   renderSquare(squareIndex) {
+    console.log("Gagnant:", this.getWinner());
+    
     return (
       <BoardSquare
         value={this.state.squares[squareIndex]}
