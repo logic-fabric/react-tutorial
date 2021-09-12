@@ -7,6 +7,10 @@
   background: var(--primary-100);
 }
 
+.board__row {
+  display: flex;
+}
+
 .board-square {
   width: 4rem;
   height: 4rem;
