@@ -2,10 +2,19 @@ import React from "react";
 
 import "./Board.css";
 
+const X_ICON = "fas fa-times-circle";
+const O_ICON = "fas fa-dot-circle";
+
 function BoardSquare(props) {
   return (
     <button className="board-square" onClick={props.onClick}>
-      <div className="board-square__content">{props.value}</div>
+      <div className="board-square__content">
+        <span
+          className={`${
+            props.value ? (props.value === "X" ? X_ICON : O_ICON) : ""
+          }`}
+        ></span>
+      </div>
     </button>
   );
 }
@@ -62,7 +71,10 @@ export class Board extends React.Component {
           {this.renderSquare(8)}
         </div>
 
-        <p className="board__next-player">Prochain joueur : {nextPlayer}</p>
+        <p className="board__next-player">
+          <span>Prochain joueur : </span>
+          <span className={`${nextPlayer === "X" ? X_ICON : O_ICON}`}></span>
+        </p>
       </div>
     );
   }

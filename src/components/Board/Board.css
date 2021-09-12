@@ -1,18 +1,10 @@
 .board {
   width: fit-content;
   margin: auto;
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: 0.25rem;
 
   background: var(--primary-100);
-}
-
-.board__next-player {
-  margin: 1.5rem 0 0 0;
-
-  font-size: var(--h4-size);
-  font-weight: 700;
-  text-align: center;
 }
 
 .board__row {
@@ -20,8 +12,8 @@
 }
 
 .board-square {
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
   margin: 0.125rem;
   border: 0.25rem solid var(--primary-500);
   border-radius: 0.25rem;
@@ -32,7 +24,23 @@
 }
 
 .board-square__content {
-  color: var(--primary-500);
   font-size: var(--h1-size);
   font-weight: 700;
+}
+
+.fa-times-circle {
+  color: var(--primary-500);
+}
+
+.fa-dot-circle {
+  color: var(--tonic-300);
+}
+
+.board__next-player {
+  margin: 1.5rem 0 0 0;
+
+  color: var(--primary-700);
+  font-size: var(--h3-size);
+  font-weight: 700;
+  text-align: center;
 }
