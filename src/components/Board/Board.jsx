@@ -37,19 +37,20 @@ export class Board extends React.Component {
     this.state = {
       squares: Array(9).fill(null),
       xIsNextPlayer: true,
+      winner: null,
     };
   }
 
-  getWinner() {
+  getWinner(squares) {
     for (let config of WINNING_CONFIGURATIONS) {
       const [index1, index2, index3] = config;
 
       if (
-        this.state.squares[index1] &&
-        this.state.squares[index1] === this.state.squares[index2] &&
-        this.state.squares[index1] === this.state.squares[index3]
+        squares[index1] &&
+        squares[index1] === squares[index2] &&
+        squares[index1] === squares[index3]
       ) {
-        return this.state.squares[index1];
+        return squares[index1];
       }
     }
 
@@ -57,30 +58,35 @@ export class Board extends React.Component {
   }
 
   handleClick(squareIndex) {
-    if (!this.state.squares[squareIndex]) {
+    if (!this.state.winner && !this.state.squares[squareIndex]) {
       const newSquaresState = [...this.state.squares];
       newSquaresState[squareIndex] = this.state.xIsNextPlayer ? "X" : "O";
 
-      this.setState({
+      let newState = {
         squares: newSquaresState,
         xIsNextPlayer: !this.state.xIsNextPlayer,
-      });
+        winner: this.getWinner(newSquaresState),
+      };
+
+      this.setState(newState);
     }
   }
 
   renderSquare(squareIndex) {
-    console.log("Gagnant:", this.getWinner());
-
     return (
       <BoardSquare
         value={this.state.squares[squareIndex]}
-        onClick={() => this.handleClick(squareIndex)}
+        onClick={() => {
+          this.handleClick(squareIndex);
+        }}
       />
     );
   }
 
   render() {
     const nextPlayer = this.state.xIsNextPlayer ? "X" : "O";
+
+    console.log("state =", this.state);
 
     return (
       <div className="board">
