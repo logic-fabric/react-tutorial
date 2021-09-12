@@ -2,14 +2,12 @@ import React from "react";
 
 import "./Board.css";
 
-class BoardSquare extends React.Component {
-  render() {
-    return (
-      <button className="board-square" onClick={() => this.props.onClick()}>
-        <div className="board-square__content">{this.props.value}</div>
-      </button>
-    );
-  }
+function BoardSquare(props) {
+  return (
+    <button className="board-square" onClick={props.onClick}>
+      <div className="board-square__content">{props.value}</div>
+    </button>
+  );
 }
 
 export class Board extends React.Component {
