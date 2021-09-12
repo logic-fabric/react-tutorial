@@ -36,9 +36,21 @@ export class Board extends React.Component {
 
     this.state = {
       squares: Array(9).fill(null),
+      emptySquares: 9,
       xIsNextPlayer: true,
       winner: null,
     };
+  }
+
+  clearState() {
+    const newState = {
+      squares: Array(9).fill(null),
+      emptySquares: 9,
+      xIsNextPlayer: true,
+      winner: null,
+    };
+
+    this.setState(newState);
   }
 
   getWinner(squares) {
@@ -64,6 +76,7 @@ export class Board extends React.Component {
 
       let newState = {
         squares: newSquaresState,
+        emptySquares: this.state.emptySquares - 1,
         xIsNextPlayer: !this.state.xIsNextPlayer,
         winner: this.getWinner(newSquaresState),
       };
@@ -112,6 +125,25 @@ export class Board extends React.Component {
           <span>Prochain joueur : </span>
           <span className={`${nextPlayer === "X" ? X_ICON : O_ICON}`}></span>
         </p>
+
+        {this.state.winner ? (
+          <div className="board__end-game-modal">
+            <div>
+              <span
+                className={`${this.state.winner === "X" ? X_ICON : O_ICON}`}
+              ></span>
+              <span> gagne la partie !</span>
+            </div>
+            <button onClick={() => this.clearState()}>Rejouer</button>
+          </div>
+        ) : this.state.emptySquares === 0 ? (
+          <div className="board__end-game-modal">
+            <div>Match nul !</div>
+            <button onClick={() => this.clearState()}>Rejouer</button>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     );
   }

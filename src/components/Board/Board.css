@@ -1,4 +1,6 @@
 .board {
+  position: relative;
+
   width: fit-content;
   margin: auto;
   padding: 2rem;
@@ -43,4 +45,35 @@
   font-size: var(--h3-size);
   font-weight: 700;
   text-align: center;
+}
+
+.board__end-game-modal {
+  position: absolute;
+  top: 6rem;
+  left: -3rem;
+
+  width: 100%;
+  padding: 3rem;
+  border: 0.25rem solid var(--primary-500);
+  border-radius: 0.5rem;
+
+  color: var(--primary-700);
+  font-size: var(--h3-size);
+  font-weight: 700;
+  text-align: center;
+
+  background: white;
+}
+
+.board__end-game-modal button {
+  margin: 2rem 0 0 0;
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 0.25rem;
+
+  color: white;
+
+  background: var(--primary-500);
+
+  cursor: pointer;
 }
