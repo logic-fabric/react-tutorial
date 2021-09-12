@@ -57,18 +57,20 @@ export class Board extends React.Component {
   }
 
   handleClick(squareIndex) {
-    const newSquaresState = [...this.state.squares];
-    newSquaresState[squareIndex] = this.state.xIsNextPlayer ? "X" : "O";
+    if (!this.state.squares[squareIndex]) {
+      const newSquaresState = [...this.state.squares];
+      newSquaresState[squareIndex] = this.state.xIsNextPlayer ? "X" : "O";
 
-    this.setState({
-      squares: newSquaresState,
-      xIsNextPlayer: !this.state.xIsNextPlayer,
-    });
+      this.setState({
+        squares: newSquaresState,
+        xIsNextPlayer: !this.state.xIsNextPlayer,
+      });
+    }
   }
 
   renderSquare(squareIndex) {
     console.log("Gagnant:", this.getWinner());
-    
+
     return (
       <BoardSquare
         value={this.state.squares[squareIndex]}
