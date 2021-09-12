@@ -16,14 +16,18 @@ export class Board extends React.Component {
 
     this.state = {
       squares: Array(9).fill(null),
+      xIsNextPlayer: true,
     };
   }
 
   handleClick(squareIndex) {
     const newSquaresState = [...this.state.squares];
-    newSquaresState[squareIndex] = "X";
+    newSquaresState[squareIndex] = this.state.xIsNextPlayer ? "X" : "O";
 
-    this.setState({ squares: newSquaresState });
+    this.setState({
+      squares: newSquaresState,
+      xIsNextPlayer: !this.state.xIsNextPlayer,
+    });
   }
 
   renderSquare(squareIndex) {
@@ -36,6 +40,8 @@ export class Board extends React.Component {
   }
 
   render() {
+    const nextPlayer = this.state.xIsNextPlayer ? "X" : "O";
+
     return (
       <div className="board">
         <div className="board__row">
@@ -55,6 +61,8 @@ export class Board extends React.Component {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
+
+        <p className="board__next-player">Prochain joueur : {nextPlayer}</p>
       </div>
     );
   }
