@@ -41,15 +41,30 @@
   border-radius: 0.25rem;
 
   color: white;
+}
+
+.active-undo-btn {
+  outline: none;
 
   cursor: pointer;
 }
 
-.game-infos button.x-bg {
+.active-undo-btn:focus,
+.active-undo-btn:hover {
+  transform: scale(1.05);
+
+  transition: all 300ms;
+}
+
+.game-infos button {
+  background: var(--neutral-300);
+}
+
+.game-infos button.x-bg.active-undo-btn {
   background: var(--primary-700);
 }
 
-.game-infos button.o-bg {
+.game-infos button.o-bg.active-undo-btn {
   background: var(--tonic-700);
 }
 

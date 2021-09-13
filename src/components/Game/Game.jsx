@@ -56,7 +56,27 @@ export class Game extends React.Component {
     return null;
   }
 
-  handleClick(squareIndex) {
+  undoLastMove() {
+    const newSquaresState =
+      this.state.boardHistory[this.state.boardHistory.length - 2];
+
+    const newBoardHistory = [...this.state.boardHistory];
+    newBoardHistory.pop();
+
+    console.log("click undo");
+
+    let newState = {
+      ...this.state,
+      squares: newSquaresState,
+      emptySquares: this.state.emptySquares + 1,
+      xIsNextPlayer: !this.state.xIsNextPlayer,
+      boardHistory: newBoardHistory,
+    };
+
+    this.setState(newState);
+  }
+
+  handleClickOnBoard(squareIndex) {
     if (!this.state.winner && !this.state.squares[squareIndex]) {
       const newSquaresState = [...this.state.squares];
       newSquaresState[squareIndex] = this.state.xIsNextPlayer ? "X" : "O";
@@ -89,7 +109,7 @@ export class Game extends React.Component {
             emptySquares={this.state.emptySquares}
             winner={this.state.winner}
             xIsNextPlayer={this.state.xIsNextPlayer}
-            handleClick={(squareIndex) => this.handleClick(squareIndex)}
+            handleClick={(squareIndex) => this.handleClickOnBoard(squareIndex)}
             clearState={() => this.clearState()}
           />
 
@@ -107,9 +127,17 @@ export class Game extends React.Component {
                   return (
                     <li key={`undo-${index}`}>
                       <button
-                        className={`${
-                          index % 2 === 1 ? "x-bg" : "o-bg"
+                        className={`${index % 2 === 1 ? "x-bg" : "o-bg"}${
+                          index === this.state.boardHistory.length - 1
+                            ? " active-undo-btn"
+                            : ""
                         }`}
+                        onClick={() => {
+                          if (index === this.state.boardHistory.length - 1) {
+                            this.undoLastMove();
+                          }
+                        }}
+                        disabled={index < this.state.boardHistory.length - 1}
                       >
                         <span className="fas fa-undo"></span>
                         <span> annuler le mouvement de </span>
