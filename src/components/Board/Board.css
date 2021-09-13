@@ -1,6 +1,4 @@
 .board {
-  position: relative;
-
   width: fit-content;
   margin: auto;
   padding: 2rem;
@@ -47,14 +45,24 @@
   text-align: center;
 }
 
-.board__end-game-modal {
-  position: absolute;
-  top: 6rem;
-  left: -3rem;
+.board__modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
 
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.board__modal {
+  position: absolute;
+  top: 12rem;
+  left: 50%;
+
+  width: 22rem;
   padding: 3rem;
-  border: 0.25rem solid var(--primary-500);
   border-radius: 0.5rem;
 
   color: var(--primary-700);
@@ -63,9 +71,10 @@
   text-align: center;
 
   background: white;
+  transform: translateX(-50%);
 }
 
-.board__end-game-modal button {
+.board__modal button {
   margin: 2rem 0 0 0;
   padding: 0.5rem 2rem;
   border: none;
