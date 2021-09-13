@@ -12,10 +12,47 @@
 }
 
 .game-infos__next-player {
-  margin: 0;
-  
+  margin: 0 0 1rem 0;
+
   color: var(--primary-700);
   font-size: var(--h3-size);
   font-weight: 700;
   text-align: center;
+}
+
+.fa-times-circle {
+  color: var(--primary-500);
+}
+
+.fa-dot-circle {
+  color: var(--tonic-300);
+}
+
+.fa-undo {
+  padding: 0 0.5rem;
+  font-size: var(--sm-size);
+}
+
+.game-infos button {
+  width: 100%;
+  padding: 0.25rem;
+  margin: 0.125rem 0;
+  border: none;
+  border-radius: 0.25rem;
+
+  color: white;
+
+  cursor: pointer;
+}
+
+.game-infos button.x-bg {
+  background: var(--primary-700);
+}
+
+.game-infos button.o-bg {
+  background: var(--tonic-700);
+}
+
+.game-infos button .fas {
+  color: white;
 }

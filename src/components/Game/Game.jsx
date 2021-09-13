@@ -24,7 +24,7 @@ export class Game extends React.Component {
       emptySquares: 9,
       winner: null,
       xIsNextPlayer: true,
-      boardHistory: Array(9).fill(null),
+      boardHistory: [Array(9).fill(null)],
     };
   }
 
@@ -34,7 +34,7 @@ export class Game extends React.Component {
       emptySquares: 9,
       winner: null,
       xIsNextPlayer: true,
-      boardHistory: Array(9).fill(null),
+      boardHistory: [Array(9).fill(null)],
     };
 
     this.setState(newState);
@@ -101,7 +101,29 @@ export class Game extends React.Component {
               ></span>
             </p>
 
-            <ol>{/* TO DO */}</ol>
+            <ol>
+              {this.state.boardHistory.map((board, index) => {
+                if (index > 0) {
+                  return (
+                    <li key={`undo-${index}`}>
+                      <button
+                        className={`${
+                          index % 2 === 1 ? "x-bg" : "o-bg"
+                        }`}
+                      >
+                        <span className="fas fa-undo"></span>
+                        <span> annuler le mouvement de </span>
+                        <span
+                          className={`${index % 2 === 1 ? X_ICON : O_ICON}`}
+                        ></span>
+                      </button>
+                    </li>
+                  );
+                }
+
+                return "";
+              })}
+            </ol>
           </div>
         </div>
       </div>
