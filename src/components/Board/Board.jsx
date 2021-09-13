@@ -16,7 +16,7 @@ function BoardSquare(props) {
           : ""
       }`}
       onClick={props.onClick}
-      disabled={props.value}
+      disabled={props.value || props.winner}
     >
       <div className="board-square__content">
         <span
@@ -30,12 +30,13 @@ function BoardSquare(props) {
 }
 
 export class Board extends React.Component {
-  renderSquare(squareIndex, winningConfig) {
+  renderSquare(squareIndex, winner, winningConfig) {
     return (
       <BoardSquare
         key={`square-${squareIndex}`}
         squareIndex={squareIndex}
         value={this.props.squares[squareIndex]}
+        winner={winner}
         winningConfig={winningConfig}
         onClick={() => {
           this.props.handleClick(squareIndex);
@@ -50,7 +51,11 @@ export class Board extends React.Component {
         {[0, 1, 2].map((row) => (
           <div className="board__row" key={`row-${row}`}>
             {[0, 1, 2].map((col) =>
-              this.renderSquare(3 * row + col, this.props.winningConfig)
+              this.renderSquare(
+                3 * row + col,
+                this.props.winner,
+                this.props.winningConfig
+              )
             )}
           </div>
         ))}
@@ -59,17 +64,22 @@ export class Board extends React.Component {
           <div className="board__modal-bg">
             <div className="board__modal">
               {this.props.winner ? (
-                <div>
-                  <span
+                <p className="board__modal-message">
+                  <div
                     className={`${this.props.winner === "X" ? X_ICON : O_ICON}`}
-                  ></span>
-                  <span> gagne la partie !</span>
-                </div>
+                  ></div>
+                  <div> gagne la partie !</div>
+                </p>
               ) : (
                 <div>Match nul !</div>
               )}
 
-              <button onClick={() => this.props.clearState()}>Rejouer</button>
+              <button
+                className="btn--cta"
+                onClick={() => this.props.clearState()}
+              >
+                Rejouer
+              </button>
             </div>
           </div>
         ) : (

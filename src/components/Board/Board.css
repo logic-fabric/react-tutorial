@@ -29,12 +29,13 @@
 .board-square.x-bg {
   border-color: var(--primary-700);
 
-  background: var(--primary-700);
+  background: linear-gradient(60deg, var(--primary-700), var(--primary-500));
 }
 
 .board-square.o-bg {
   border-color: var(--tonic-700);
-  background: var(--tonic-700);
+
+  background: linear-gradient(60deg, var(--tonic-700), var(--tonic-500));
 }
 
 .board-square.x-bg .fas,
@@ -69,6 +70,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 8000;
 
   width: 100vw;
   height: 100vh;
@@ -78,7 +80,7 @@
 
 .board__modal {
   position: absolute;
-  top: 12rem;
+  top: 11rem;
   left: 50%;
 
   width: 22rem;
@@ -95,27 +97,38 @@
   transform: translateX(-50%);
 }
 
-.board__modal button {
+.board__modal-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.75rem;
+}
+
+.board__modal-message .fas {
+  padding: 0 0.5rem;
+
+  font-size: 2.5rem;
+}
+
+.btn--cta {
   margin: 2rem 0 0 0;
-  padding: 0.5rem 2rem;
-  border: 0.125rem solid transparent;
-  border-radius: 0.25rem;
+  padding: 0.75rem 4rem;
+  border: none;
+  border-radius: 0.5rem;
   outline: none;
 
   color: white;
 
-  background: var(--primary-500);
+  background: linear-gradient(60deg, var(--tonic-700), var(--tonic-500));
 
   cursor: pointer;
-
   transition: all 300ms;
 }
 
-.board__modal button:focus,
-.board__modal button:hover {
+.btn--cta:focus,
+.btn--cta:hover {
   box-shadow: 0 0.25rem 0.5rem var(--neutral-500);
-
-  background: var(--primary-700);
 
   transform: translateY(-0.125rem);
 }

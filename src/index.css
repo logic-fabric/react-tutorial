@@ -87,6 +87,13 @@ h6 {
   font-weight: 500;
 }
 
+p {
+  margin: 0;
+  
+  color: var(--primary-700);
+  font-weight: 700;
+}
+
 h1 {
   margin: 1rem 0 2rem 0;
 

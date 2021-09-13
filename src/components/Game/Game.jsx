@@ -145,7 +145,10 @@ export class Game extends React.Component {
                             this.undoLastMove();
                           }
                         }}
-                        disabled={index < this.state.boardHistory.length - 1}
+                        disabled={
+                          index < this.state.boardHistory.length - 1 ||
+                          this.state.winner
+                        }
                       >
                         <span className="fas fa-undo"></span>
                         <span> annuler le mouvement de </span>
