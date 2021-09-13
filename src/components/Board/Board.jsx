@@ -126,19 +126,19 @@ export class Board extends React.Component {
           <span className={`${nextPlayer === "X" ? X_ICON : O_ICON}`}></span>
         </p>
 
-        {this.state.winner ? (
+        {this.state.winner || this.state.emptySquares === 0 ? (
           <div className="board__end-game-modal">
-            <div>
-              <span
-                className={`${this.state.winner === "X" ? X_ICON : O_ICON}`}
-              ></span>
-              <span> gagne la partie !</span>
-            </div>
-            <button onClick={() => this.clearState()}>Rejouer</button>
-          </div>
-        ) : this.state.emptySquares === 0 ? (
-          <div className="board__end-game-modal">
-            <div>Match nul !</div>
+            {this.state.winner ? (
+              <div>
+                <span
+                  className={`${this.state.winner === "X" ? X_ICON : O_ICON}`}
+                ></span>
+                <span> gagne la partie !</span>
+              </div>
+            ) : (
+              <div>Match nul !</div>
+            )}
+
             <button onClick={() => this.clearState()}>Rejouer</button>
           </div>
         ) : (
