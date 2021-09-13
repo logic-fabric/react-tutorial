@@ -107,7 +107,7 @@ export class Game extends React.Component {
     const nextPlayer = this.state.xIsNextPlayer ? "X" : "O";
 
     return (
-      <div className="main">
+      <main>
         <h1>tic tac toe</h1>
 
         <div className="game">
@@ -165,7 +165,7 @@ export class Game extends React.Component {
             </ol>
           </div>
         </div>
-      </div>
+      </main>
     );
   }
 }

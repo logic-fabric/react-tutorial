@@ -79,3 +79,25 @@
 .game-infos button .fas {
   color: white;
 }
+
+@media screen and (max-width: 890px) {
+  .game {
+    flex-direction: column;
+  }
+
+  .game-infos {
+    width: 18rem;
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+
+  .game-infos ol {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .game-infos button {
+    padding: 0.75rem;
+    margin: 0.25rem 0;
+  }
+}

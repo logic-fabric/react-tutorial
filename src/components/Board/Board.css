@@ -84,7 +84,6 @@
   left: 50%;
 
   width: 22rem;
-  margin: 0 2rem;
   padding: 3rem;
   border-radius: 0.5rem;
 
@@ -131,4 +130,30 @@
   box-shadow: 0 0.25rem 0.5rem var(--neutral-500);
 
   transform: translateY(-0.125rem);
+}
+
+@media screen and (max-width: 890px) {
+  .board {
+    padding: 1.5rem;
+  }
+
+  .board-square {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .board__modal {
+    top: 9rem;
+
+    width: 16rem;
+    padding: 1.5rem;
+  }
+
+  .board__modal-message {
+    font-size: 1.5rem;
+  }
+
+  .board__modal-message .fas {
+    font-size: 2rem;
+  }
 }
