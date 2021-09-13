@@ -27,6 +27,7 @@ export class Board extends React.Component {
   renderSquare(squareIndex) {
     return (
       <BoardSquare
+        key={`square-${squareIndex}`}
         value={this.props.squares[squareIndex]}
         onClick={() => {
           this.props.handleClick(squareIndex);
@@ -38,23 +39,11 @@ export class Board extends React.Component {
   render() {
     return (
       <div className="board">
-        <div className="board__row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-
-        <div className="board__row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-
-        <div className="board__row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
+        {[0, 1, 2].map((row) => (
+          <div className="board__row" key={`row-${row}`}>
+            {[0, 1, 2].map((col) => this.renderSquare(3 * row + col))}
+          </div>
+        ))}
 
         {this.props.winner || this.props.emptySquares === 0 ? (
           <div className="board__modal-bg">
