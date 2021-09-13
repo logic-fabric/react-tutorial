@@ -1,6 +1,6 @@
 .board {
   width: fit-content;
-  margin: auto;
+
   padding: 2rem;
   border-radius: 0.25rem;
 
@@ -53,15 +53,6 @@
   color: var(--tonic-300);
 }
 
-.board__next-player {
-  margin: 1.5rem 0 0 0;
-
-  color: var(--primary-700);
-  font-size: var(--h3-size);
-  font-weight: 700;
-  text-align: center;
-}
-
 .board__modal-bg {
   position: fixed;
   top: 0;
@@ -79,6 +70,7 @@
   left: 50%;
 
   width: 22rem;
+  margin: 0 2rem;
   padding: 3rem;
   border-radius: 0.5rem;
 
