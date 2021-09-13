@@ -8,7 +8,13 @@ export const O_ICON = "fas fa-dot-circle";
 function BoardSquare(props) {
   return (
     <button
-      className="board-square"
+      className={`board-square${
+        props.winningConfig.includes(props.squareIndex)
+          ? props.value === "X"
+            ? " x-bg"
+            : " o-bg"
+          : ""
+      }`}
       onClick={props.onClick}
       disabled={props.value}
     >
@@ -24,11 +30,13 @@ function BoardSquare(props) {
 }
 
 export class Board extends React.Component {
-  renderSquare(squareIndex) {
+  renderSquare(squareIndex, winningConfig) {
     return (
       <BoardSquare
         key={`square-${squareIndex}`}
+        squareIndex={squareIndex}
         value={this.props.squares[squareIndex]}
+        winningConfig={winningConfig}
         onClick={() => {
           this.props.handleClick(squareIndex);
         }}
@@ -41,7 +49,9 @@ export class Board extends React.Component {
       <div className="board">
         {[0, 1, 2].map((row) => (
           <div className="board__row" key={`row-${row}`}>
-            {[0, 1, 2].map((col) => this.renderSquare(3 * row + col))}
+            {[0, 1, 2].map((col) =>
+              this.renderSquare(3 * row + col, this.props.winningConfig)
+            )}
           </div>
         ))}
 

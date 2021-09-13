@@ -23,6 +23,7 @@ export class Game extends React.Component {
       squares: Array(9).fill(null),
       emptySquares: 9,
       winner: null,
+      winningConfig: [],
       xIsNextPlayer: true,
       boardHistory: [Array(9).fill(null)],
     };
@@ -33,6 +34,7 @@ export class Game extends React.Component {
       squares: Array(9).fill(null),
       emptySquares: 9,
       winner: null,
+      winningConfig: [],
       xIsNextPlayer: true,
       boardHistory: [Array(9).fill(null)],
     };
@@ -49,11 +51,17 @@ export class Game extends React.Component {
         squares[index1] === squares[index2] &&
         squares[index1] === squares[index3]
       ) {
-        return squares[index1];
+        return {
+          winner: squares[index1],
+          winningConfig: config,
+        };
       }
     }
 
-    return null;
+    return {
+      winner: null,
+      winningConfig: [],
+    };
   }
 
   undoLastMove() {
@@ -62,8 +70,6 @@ export class Game extends React.Component {
 
     const newBoardHistory = [...this.state.boardHistory];
     newBoardHistory.pop();
-
-    console.log("click undo");
 
     let newState = {
       ...this.state,
@@ -87,7 +93,8 @@ export class Game extends React.Component {
       let newState = {
         squares: newSquaresState,
         emptySquares: this.state.emptySquares - 1,
-        winner: this.getWinner(newSquaresState),
+        winner: this.getWinner(newSquaresState).winner,
+        winningConfig: this.getWinner(newSquaresState).winningConfig,
         xIsNextPlayer: !this.state.xIsNextPlayer,
         boardHistory: newBoardHistory,
       };
@@ -108,6 +115,7 @@ export class Game extends React.Component {
             squares={this.state.squares}
             emptySquares={this.state.emptySquares}
             winner={this.state.winner}
+            winningConfig={this.state.winningConfig}
             xIsNextPlayer={this.state.xIsNextPlayer}
             handleClick={(squareIndex) => this.handleClickOnBoard(squareIndex)}
             clearState={() => this.clearState()}
