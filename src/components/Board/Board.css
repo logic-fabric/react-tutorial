@@ -17,10 +17,27 @@
   margin: 0.125rem;
   border: 0.25rem solid var(--primary-500);
   border-radius: 0.25rem;
+  outline: none;
 
   background: white;
 
   cursor: pointer;
+
+  transition: all 300ms;
+}
+
+.board-square:focus {
+  border-color: var(--tonic-700);
+
+  transform: scale(1.05);
+}
+
+.board-square:hover {
+  background: var(--neutral-100);
+}
+
+.board-square:disabled:hover {
+  background: white;
 }
 
 .board-square__content {
@@ -77,12 +94,24 @@
 .board__modal button {
   margin: 2rem 0 0 0;
   padding: 0.5rem 2rem;
-  border: none;
+  border: 0.125rem solid transparent;
   border-radius: 0.25rem;
+  outline: none;
 
   color: white;
 
   background: var(--primary-500);
 
   cursor: pointer;
+
+  transition: all 300ms;
+}
+
+.board__modal button:focus,
+.board__modal button:hover {
+  box-shadow: 0 0.25rem 0.5rem var(--neutral-500);
+
+  background: var(--primary-700);
+
+  transform: translateY(-0.125rem);
 }

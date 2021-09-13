@@ -18,7 +18,11 @@ const WINNING_CONFIGURATIONS = [
 
 function BoardSquare(props) {
   return (
-    <button className="board-square" onClick={props.onClick}>
+    <button
+      className="board-square"
+      onClick={props.onClick}
+      disabled={props.value}
+    >
       <div className="board-square__content">
         <span
           className={`${
@@ -99,8 +103,6 @@ export class Board extends React.Component {
   render() {
     const nextPlayer = this.state.xIsNextPlayer ? "X" : "O";
 
-    console.log("state =", this.state);
-
     return (
       <div className="board">
         <div className="board__row">
@@ -140,7 +142,9 @@ export class Board extends React.Component {
                 <div>Match nul !</div>
               )}
 
-              <button onClick={() => this.clearState()}>Rejouer</button>
+              <button onClick={() => this.clearState()}>
+                Rejouer
+              </button>
             </div>
           </div>
         ) : (
