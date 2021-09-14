@@ -65,10 +65,10 @@ export class Board extends React.Component {
             <div className="board__modal">
               {this.props.winner ? (
                 <p className="board__modal-message">
-                  <div
+                  <span
                     className={`${this.props.winner === "X" ? X_ICON : O_ICON}`}
-                  ></div>
-                  <div> gagne la partie !</div>
+                  ></span>
+                  <span> gagne la partie !</span>
                 </p>
               ) : (
                 <div>Match nul !</div>

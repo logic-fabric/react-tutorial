@@ -145,8 +145,8 @@
   .board__modal {
     top: 9rem;
 
-    width: 16rem;
-    padding: 1.5rem;
+    width: 15rem;
+    padding: 2rem;
   }
 
   .board__modal-message {
